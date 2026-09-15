@@ -1,0 +1,118 @@
+/* ===== MINIMAL BIRTHDAY ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #faf7f2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3d3a36;
+}
+
+.card {
+    text-align: center;
+    padding: 40px;
+    max-width: 420px;
+}
+
+.hidden { display: none; }
+
+/* ---- closed state ---- */
+.cake-emoji {
+    font-size: 90px;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    user-select: none;
+}
+
+.cake-emoji:hover { transform: scale(1.06); }
+
+.hint {
+    margin-top: 18px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b0a89e;
+    animation: fadeHint 2.5s ease infinite;
+}
+
+@keyframes fadeHint {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+}
+
+/* ---- pop animation on the cake ---- */
+.pop {
+    animation: popAway 0.45s ease forwards;
+}
+
+@keyframes popAway {
+    0%   { transform: scale(1); opacity: 1; }
+    40%  { transform: scale(1.25); }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+/* ---- opened state ---- */
+.open { animation: fadeUp 1s ease both; }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.small {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #a89f93;
+    margin-bottom: 6px;
+}
+
+h1 {
+    font-size: 2.8rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.line {
+    width: 46px;
+    height: 1px;
+    background: #d8cfc2;
+    margin: 22px auto;
+}
+
+.message {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #6b645c;
+}
+
+.sign {
+    margin-top: 26px;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #a89f93;
+}
+
+/* ---- tiny confetti dots ---- */
+.dot {
+    position: fixed;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: scatter 0.9s ease-out forwards;
+}
+
+@keyframes scatter {
+    to {
+        transform: translate(var(--dx), var(--dy)) scale(0);
+        opacity: 0;
+    }
+}
